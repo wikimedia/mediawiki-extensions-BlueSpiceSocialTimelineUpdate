@@ -28,4 +28,5 @@
 
 namespace BlueSpice\Social\TimelineUpdate;
 
-class Extension extends \BlueSpice\Extension {}
+class Extension extends \BlueSpice\Extension {
+}
