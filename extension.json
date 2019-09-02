@@ -6,10 +6,10 @@
 	"author": "Josef Konrad",
 	"descriptionmsg": "bs-socialtimelineupdate-desc",
 	"requires": {
-		"MediaWiki": ">= 1.34.0",
+		"MediaWiki": "~1.31",
 		"extensions": {
-			"BlueSpiceFoundation": ">= 3.2",
-			"BlueSpiceSocial": ">= 3.2"
+			"BlueSpiceFoundation": "~3.1",
+			"BlueSpiceSocial": "~3.1"
 		}
 	},
 	"type": "bluespice",
