@@ -1,6 +1,7 @@
 <?php
 
 namespace BlueSpice\Social\TimelineUpdate\Hook\BSSocialModuleDepths;
+
 use BlueSpice\Social\Hook\BSSocialModuleDepths;
 
 class AddModules extends BSSocialModuleDepths {

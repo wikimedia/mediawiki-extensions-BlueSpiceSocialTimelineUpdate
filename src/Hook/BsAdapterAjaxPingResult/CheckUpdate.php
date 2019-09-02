@@ -8,23 +8,22 @@ use BlueSpice\Social\Entity;
 
 class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 	protected function doProcess() {
-
 		$data = (object)$this->params['data'];
 		$data->limit = 10;
 
-		foreach( $data->filter as $filter ) {
-			if( $filter->property == Entity::ATTR_TIMESTAMP_CREATED ) {
+		foreach ( $data->filter as $filter ) {
+			if ( $filter->property == Entity::ATTR_TIMESTAMP_CREATED ) {
 				$filter->comparison = Date::COMPARISON_GREATER_THAN;
 				break;
 			}
 		}
 
 		$class = "\\BlueSpice\\Social\\EntityListContext";
-			if( isset( $data->EntityListContext ) ) {
+			if ( isset( $data->EntityListContext ) ) {
 				$class = $data->EntityListContext;
 			}
 			$entity = null;
-			if( isset( $data->parentid ) ) {
+			if ( isset( $data->parentid ) ) {
 				$entity = Services::getInstance()->getBSEntityFactory()->newFromID(
 					$data->parentid,
 					Entity::NS
@@ -56,7 +55,7 @@ class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 	}
 
 	protected function skipProcessing() {
-		if( $this->reference !== "BlueSpiceSocial.TimelineUpdate.Button.Update" ) {
+		if ( $this->reference !== "BlueSpiceSocial.TimelineUpdate.Button.Update" ) {
 			return true;
 		}
 
