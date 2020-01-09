@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mansil alfalb"
+			"Mansil alfalb",
+			"Hamilton Abreu"
 		]
 	},
+	"bs-socialtimelineupdate-desc": "Funcionalidade de atualização para BlueSpiceSocialTimeline",
 	"bs-socialtimelineupdate-update-button-tooltip": "Recarregar lista"
 }
