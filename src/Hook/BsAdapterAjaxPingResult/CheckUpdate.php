@@ -1,9 +1,9 @@
 <?php
 namespace BlueSpice\Social\TimelineUpdate\Hook\BsAdapterAjaxPingResult;
 
-use BlueSpice\Services;
 use BlueSpice\Data\Filter\Date;
 use BlueSpice\Renderer\Params;
+use BlueSpice\Services;
 use BlueSpice\Social\Entity;
 
 class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
