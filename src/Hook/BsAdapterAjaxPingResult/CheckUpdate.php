@@ -24,7 +24,7 @@ class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 			}
 			$entity = null;
 			if ( isset( $data->parentid ) ) {
-				$entity = Services::getInstance()->getBSEntityFactory()->newFromID(
+				$entity = Services::getInstance()->getService( 'BSEntityFactory' )->newFromID(
 					$data->parentid,
 					Entity::NS
 				);
@@ -40,7 +40,7 @@ class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 			(array)$data,
 			[ 'context' => $context ]
 		);
-		$renderer = Services::getInstance()->getBSRendererFactory()->get(
+		$renderer = Services::getInstance()->getService( 'BSRendererFactory' )->get(
 			'entitylist',
 			new Params( $params )
 		);
