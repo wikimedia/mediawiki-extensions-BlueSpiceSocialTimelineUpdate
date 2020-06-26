@@ -19,29 +19,29 @@ class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 		}
 
 		$class = "\\BlueSpice\\Social\\EntityListContext";
-			if ( isset( $data->EntityListContext ) ) {
-				$class = $data->EntityListContext;
-			}
-			$entity = null;
-			if ( isset( $data->parentid ) ) {
-				$entity = Services::getInstance()->getService( 'BSEntityFactory' )->newFromID(
-					$data->parentid,
-					Entity::NS
-				);
-			}
-			$context = new $class(
-				$this->getContext(),
-				$this->getConfig(),
-				$this->getContext()->getUser(),
-				$entity
+		if ( isset( $data->EntityListContext ) ) {
+			$class = $data->EntityListContext;
+		}
+		$entity = null;
+		if ( isset( $data->parentid ) ) {
+			$entity = Services::getInstance()->getService( 'BSEntityFactory' )->newFromID(
+				$data->parentid,
+				Entity::NS
 			);
+		}
+		$context = new $class(
+			$this->getContext(),
+			$this->getConfig(),
+			$this->getContext()->getUser(),
+			$entity
+		);
 
 		$params = array_merge(
 			(array)$data,
 			[ 'context' => $context ]
 		);
 		$renderer = Services::getInstance()->getService( 'BSRendererFactory' )->get(
-			'entitylist',
+			$context->getRendererName(),
 			new Params( $params )
 		);
 		$entities = $renderer->getEntities();
