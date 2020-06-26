@@ -37,7 +37,6 @@ bs.social.EntityListMenu.Button.Update.prototype.onClick = function () {
 		}
 		var val = curr_year + '-' + curr_month + '-' + curr_date;
 		dateFilter.field.setValue( val.toString() );
-		return;
 	}
 	var data = this.EntityListMenu.getData();
 	this.EntityListMenu.entityList.getEntities( 'replace', data );
