@@ -3,8 +3,8 @@ namespace BlueSpice\Social\TimelineUpdate\Hook\BsAdapterAjaxPingResult;
 
 use BlueSpice\Data\Filter\Date;
 use BlueSpice\Renderer\Params;
-use BlueSpice\Services;
 use BlueSpice\Social\Entity;
+use MediaWiki\MediaWikiServices;
 
 class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 	protected function doProcess() {
@@ -24,10 +24,8 @@ class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 		}
 		$entity = null;
 		if ( isset( $data->parentid ) ) {
-			$entity = Services::getInstance()->getService( 'BSEntityFactory' )->newFromID(
-				$data->parentid,
-				Entity::NS
-			);
+			$entity = MediaWikiServices::getInstance()->getService( 'BSEntityFactory' )
+				->newFromID( $data->parentid, Entity::NS );
 		}
 		$context = new $class(
 			$this->getContext(),
@@ -40,7 +38,7 @@ class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 			(array)$data,
 			[ 'context' => $context ]
 		);
-		$renderer = Services::getInstance()->getService( 'BSRendererFactory' )->get(
+		$renderer = MediaWikiServices::getInstance()->getService( 'BSRendererFactory' )->get(
 			$context->getRendererName(),
 			new Params( $params )
 		);
