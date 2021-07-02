@@ -2,7 +2,7 @@ bs.social.EntityListMenu.Button.Update = function ( EntityListMenu ) {
 	bs.social.EntityListMenu.Button.call( this, EntityListMenu );
 	OO.EventEmitter.call( this );
 	var me = this;
-
+	me.date = new Date();
 };
 
 OO.initClass( bs.social.EntityListMenu.Button.Update );
@@ -12,8 +12,7 @@ bs.social.EntityListMenu.Button.Update.prototype.init = function () {
 	bs.social.EntityListMenu.Button.Update.super.prototype.init.apply( this );
 
 	var me = this;
-	var data = me.EntityListMenu.getData();
-
+	var data = me.makeData();
 	BSPing.registerListener(
 		'BlueSpiceSocial.TimelineUpdate.Button.Update',
 		1000,
@@ -23,22 +22,17 @@ bs.social.EntityListMenu.Button.Update.prototype.init = function () {
 };
 
 bs.social.EntityListMenu.Button.Update.prototype.onClick = function () {
+	this.date = new Date();
 	var dateFilter = this.EntityListMenu.filters[ 'timestampcreated' ];
 	if( dateFilter ) {
-		var date = new Date();
-		var curr_year = date.getFullYear();
-		var curr_month = date.getMonth() + 1;
-		if( curr_month < 10 ) {
-			curr_month = "0" + curr_month;
-		}
-		var curr_date = date.getDate();
-		if( curr_date < 10) {
-			curr_date = "0" + curr_date;
-		}
-		var val = curr_year + '-' + curr_month + '-' + curr_date;
-		dateFilter.field.setValue( val.toString() );
+		dateFilter.field.setValue( this.date );
 	}
-	var data = this.EntityListMenu.getData();
+
+	var data = this.makeData();
+	var indicator = '.bs-social-entitylist-menu-item.bs-entitylist-menu-item-update '
+			+ '.bs-social-entitylist-menu-item-actions-btn .updateCounter';
+	$( indicator ).html( '' );
+
 	this.EntityListMenu.entityList.getEntities( 'replace', data );
 };
 
@@ -64,11 +58,15 @@ bs.social.EntityListMenu.Button.Update.prototype.PingListener = function () {
 	var me = this;
 
 	return function( result ) {
+		var indicator = '.bs-social-entitylist-menu-item.bs-entitylist-menu-item-update '
+			+ '.bs-social-entitylist-menu-item-actions-btn .updateCounter';
 		if( result.success === true && result.updates !== 0 ) {
-			$( '.bs-social-entitylist-menu-item.bs-entitylist-menu-item-update .bs-social-entitylist-menu-item-actions-btn .updateCounter' ).html( result.updates );
+			$( indicator ).html( result.updates );
+		} else {
+			$( indicator ).html( '' );
 		}
 
-		var data = me.EntityListMenu.getData();
+		var data = me.makeData();
 		BSPing.registerListener(
 			'BlueSpiceSocial.TimelineUpdate.Button.Update',
 			1000,
@@ -76,4 +74,17 @@ bs.social.EntityListMenu.Button.Update.prototype.PingListener = function () {
 			me.PingListener()
 		);
 	};
+};
+
+bs.social.EntityListMenu.Button.Update.prototype.makeData = function () {
+	var me = this;
+	var data = me.EntityListMenu.getData();
+	for( var i = 0; i < data.filter.length; i++ ) {
+		if( !data.filter[i].property || data.filter[i].property !== 'timestampcreated' ) {
+			continue;
+		}
+		data.filter[i].value = bs.util.convertDateToMWTimestamp( me.date );
+		break;
+	}
+	return data;
 };

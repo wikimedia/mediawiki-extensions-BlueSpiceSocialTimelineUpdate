@@ -5,6 +5,7 @@ use BlueSpice\Services;
 use BlueSpice\Data\Filter\Date;
 use BlueSpice\Renderer\Params;
 use BlueSpice\Social\Entity;
+use BlueSpice\Timestamp;
 
 class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 	protected function doProcess() {
@@ -12,8 +13,11 @@ class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 		$data->limit = 10;
 
 		foreach ( $data->filter as $filter ) {
-			if ( $filter->property == Entity::ATTR_TIMESTAMP_CREATED ) {
-				$filter->comparison = Date::COMPARISON_GREATER_THAN;
+			if ( $filter->{Date::KEY_PROPERTY} === Entity::ATTR_TIMESTAMP_CREATED ) {
+				$filter->{Date::KEY_COMPARISON} = Date::COMPARISON_GREATER_THAN;
+				$ts = new Timestamp( $filter->{Date::KEY_VALUE} );
+				$ts->unOffsetForUser( $this->getContext()->getUser() );
+				$filter->{Date::KEY_VALUE} = $ts->format( 'YmdHis' );
 				break;
 			}
 		}
