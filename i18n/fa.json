@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beginneruser",
 			"FarsiNevis"
 		]
 	},
-	"bs-socialtimelineupdate-desc": "کارکرد روزآمدسازی برای BlueSpiceSocialTimeline",
+	"bs-socialtimelineupdate-desc": "کارکرد به‌روزرسانی برای BlueSpiceSocialTimeline",
 	"bs-socialtimelineupdate-update-button-tooltip": "بارگذاری مجدد فهرست"
 }
