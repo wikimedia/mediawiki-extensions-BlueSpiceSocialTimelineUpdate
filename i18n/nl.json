@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"McDutchie",
 			"Romaine"
 		]
 	},
+	"bs-socialtimelineupdate-desc": "Bijwerkfunctionaliteit voor BlueSpiceSocialTimeline",
 	"bs-socialtimelineupdate-update-button-tooltip": "Lijst herladen"
 }
