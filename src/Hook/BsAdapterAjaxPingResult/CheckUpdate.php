@@ -1,11 +1,11 @@
 <?php
 namespace BlueSpice\Social\TimelineUpdate\Hook\BsAdapterAjaxPingResult;
 
-use BlueSpice\Data\Filter\Date;
 use BlueSpice\Renderer\Params;
 use BlueSpice\Social\Entity;
 use BlueSpice\Timestamp;
 use MediaWiki\MediaWikiServices;
+use MWStake\MediaWiki\Component\DataStore\Filter\Date;
 
 class CheckUpdate extends \BlueSpice\Hook\BsAdapterAjaxPingResult {
 	protected function doProcess() {
