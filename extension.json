@@ -2,7 +2,7 @@
 	"name": "BlueSpiceSocialTimelineUpdate",
 	"version": "4.2.0-alpha",
 	"license-name": "GPL-3.0-only",
-	"url": "https://en.wiki.bluespice.com/wiki/Reference:SocialTimelineUpdate",
+	"url": "https://en.wiki.bluespice.com/wiki/Reference:BlueSpiceSocialTimelineUpdate",
 	"author": "Josef Konrad",
 	"descriptionmsg": "bs-socialtimelineupdate-desc",
 	"requires": {
