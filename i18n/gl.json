@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"bs-socialtimelineupdate-desc": "Funcionalidade de actualización para BlueSpiceSocialTimeline",
+	"bs-socialtimelineupdate-update-button-tooltip": "Recargar a lista"
+}
