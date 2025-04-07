@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
+	"bs-socialtimelineupdate-desc": "BlueSpiceSocialTimeline의 기능 업데이트",
 	"bs-socialtimelineupdate-update-button-tooltip": "목록 다시 로드"
 }
