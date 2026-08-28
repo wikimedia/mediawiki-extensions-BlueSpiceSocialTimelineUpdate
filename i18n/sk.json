@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"bs-socialtimelineupdate-desc": "Funkcia aktualizácie pre BlueSpiceSocialTimeline",
+	"bs-socialtimelineupdate-update-button-tooltip": "Znovu načítať zoznam"
+}
